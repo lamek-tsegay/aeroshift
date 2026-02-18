@@ -1,0 +1,17 @@
+# env
+venv/
+.env
+
+# python
+__pycache__/
+*.pyc
+
+# notebooks
+.ipynb_checkpoints/
+
+# data (never commit raw/processed)
+data/raw/
+data/processed/
+
+# mac
+.DS_Store
