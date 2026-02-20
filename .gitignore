@@ -15,3 +15,6 @@ data/processed/
 
 # mac
 .DS_Store
+
+# optional: notebook outputs can change often
+notebooks/.ipynb_checkpoints/
