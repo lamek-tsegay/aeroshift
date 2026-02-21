@@ -1,0 +1,2 @@
+# mean groundspeed
+# std groundspeed
