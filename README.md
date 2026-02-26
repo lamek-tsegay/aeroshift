@@ -1,4 +1,12 @@
-# AeroShift
+<p align="center">
+  <img src="assets/aeroshift_logo.png" alt="AeroShift Logo" width="400"/>
+</p>
+
+<h1 align="center">AeroShift</h1>
+
+<p align="center">
+  Detecting distribution shifts in aircraft arrival behavior using unsupervised learning.
+</p>
 
 AeroShift is a machine learning framework for detecting distribution shifts in aircraft arrival trajectory behavior using unsupervised clustering.
 
