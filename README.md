@@ -4,7 +4,7 @@ AeroShift is a machine learning framework for detecting distribution shifts in a
 
 The system extracts geometric and kinematic features from flight trajectories, learns recurring behavioral patterns, and monitors changes in their distribution over time.
 
----
+
 
 ## Overview
 
@@ -19,7 +19,7 @@ AeroShift models arrival trajectories as behavioral feature vectors and applies 
 
 The framework is designed as a modular research pipeline, separating feature engineering, clustering, and shift detection components.
 
----
+
 
 ## Methodology
 
@@ -35,7 +35,7 @@ Each flight is represented as a time-ordered sequence containing:
 
 The raw trajectory is transformed into a compact feature vector summarizing geometric structure, speed behavior, turning dynamics, and descent characteristics.
 
----
+
 
 ### Feature Engineering
 
@@ -80,7 +80,7 @@ std_vertical_speed,
 
 This representation enables direct application of unsupervised learning algorithms.
 
----
+
 
 ### Behavioral Clustering
 
@@ -96,7 +96,7 @@ Clusters represent statistically recurring trajectory structures without requiri
 
 The resulting cluster assignments define the behavioral distribution of a given time window.
 
----
+
 
 ### Distribution Shift Detection
 
@@ -110,38 +110,42 @@ Potential divergence metrics include:
 
 Significant divergence indicates a behavioral distribution shift in arrival operations.
 
----
+
 
 ## Repository Structure
 
+```
 AeroShift/
 │
 ├── data/
-│ ├── raw/
-│ └── processed/
+│   ├── raw/
+│   └── processed/
 │
 ├── notebooks/
 │
 ├── src/
-│ ├── features/
-│ │ ├── geometry.py
-│ │ ├── speed.py
-│ │ ├── turning.py
-│ │ ├── descent.py
-│ │ └── pipeline.py
-│ │
-│ ├── clustering/
-│ ├── shift_detection/
-│ ├── anomaly/
-│ └── utils/
+│   ├── features/
+│   │   ├── geometry.py
+│   │   ├── speed.py
+│   │   ├── turning.py
+│   │   ├── descent.py
+│   │   └── pipeline.py
+│   │
+│   ├── clustering/
+│   ├── shift_detection/
+│   ├── anomaly/
+│   └── utils/
 │
 ├── requirements.txt
 └── README.md
+```
+
+The codebase is organized to isolate feature extraction, modeling, and evaluation logic for reproducibility and extensibility.
 
 
 The codebase is organized to isolate feature extraction, modeling, and evaluation logic for reproducibility and extensibility.
 
----
+
 
 ## Data
 
@@ -159,7 +163,7 @@ Synthetic generation enables controlled variation in arrival behaviors such as:
 
 Future work includes integration with real ADS-B trajectory datasets.
 
----
+
 
 ## Installation
 
@@ -173,7 +177,7 @@ Create and activate a virtual environment:
 Install dependencies:
 
 
----
+
 
 ## Running the Feature Pipeline
 
@@ -186,7 +190,7 @@ This will:
 
 Subsequent clustering and shift detection modules can then be executed using the generated feature dataset.
 
----
+
 
 ## Reproducibility
 
@@ -202,7 +206,7 @@ All modules are deterministic given fixed random seeds.
 
 Future updates will include configuration files for parameter control and experiment tracking.
 
----
+
 
 ## Research Motivation
 
@@ -217,7 +221,7 @@ The framework is intended as a research platform for:
 - Distribution shift modeling  
 - Applied machine learning in aerospace systems  
 
----
+
 
 ## Future Work
 
@@ -228,7 +232,7 @@ The framework is intended as a research platform for:
 - Visualization dashboard  
 - Deployment-ready monitoring service  
 
----
+
 
 ## Citation
 
