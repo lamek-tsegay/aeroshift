@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="assets/aeroshift_logo.png" alt="AeroShift Logo" width="400"/>
+  <img src="assets/aeroshiftlogo.png" alt="AeroShift Logo" width="400"/>
 </p>
-
-<h1 align="center">AeroShift</h1>
 
 <p align="center">
   Detecting distribution shifts in aircraft arrival behavior using unsupervised learning.
