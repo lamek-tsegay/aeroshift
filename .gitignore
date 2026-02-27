@@ -17,4 +17,4 @@ data/processed/
 .DS_Store
 
 # optional: notebook outputs can change often
-notebooks/.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/.DS_Store
