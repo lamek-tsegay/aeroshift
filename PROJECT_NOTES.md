@@ -295,22 +295,26 @@ At the end of every session — triggered by the user typing "done", "wrapping u
 ## 11\. Current Status
 
 **Last session:** 2026-05-20
-**Milestone:** 1 — Skeleton + live ingestion
+**Milestone:** 1 — Skeleton + live ingestion (scaffold complete)
 
 **Completed this session:**
 - Scaffolded `src/backend/` with FastAPI app, SQLAlchemy `AircraftState` ORM model, Pydantic v2 schemas, `/health` and `/api/v1/states` endpoints
 - Alembic configured with initial migration `0001_create_aircraft_states` (composite PK on `(icao24, observed_at)`, indexes for recent-window and per-aircraft queries, partial index for airborne rows)
-- OpenSky client (`httpx`), normalizer (drops null `time_position`, lowercases icao24, trims callsign), and polling worker that upserts via `INSERT … ON CONFLICT DO NOTHING` and publishes per-aircraft updates to Redis `aircraft.updates`
+- OpenSky client (`httpx`), normalizer (drops null `time_position`, lowercases icao24, trims callsign), polling worker upserts via `INSERT … ON CONFLICT DO NOTHING` and publishes per-aircraft updates to Redis `aircraft.updates`
 - `infra/docker-compose.yml` with `postgres`, `redis`, one-shot `migrate`, `backend`, `ingestion`; `infra/Dockerfile.backend`; `.env.example`
+- Added section 10 (Auto-update behavior) defining the closing-phrase end-of-session routine, and saved a durable backup memory so it persists across sessions
+- Renamed `CLAUDE.md` → `PROJECT_NOTES.md`, `AERO_CONTEXT.md` → `PROJECT_PLAN.md`; created `CLAUDE.md` symlink for Claude Code auto-read; both docs and `DECISIONS.md` now publicly tracked
+- Tightened `.gitignore` to ignore the symlink, `.venv/`, and tooling caches while tracking the real docs
 
-**Tests passing:** Yes — 7/7 normalizer unit tests (`tests/unit/test_normalizer.py`).
+**Tests passing:** Yes — 7/7 normalizer unit tests (`tests/unit/test_normalizer.py`). No new tests this session.
 
 **Open issues / gotchas / things to remember:**
 - Nothing has been run end-to-end yet — `docker compose up` not exercised, no real OpenSky tick verified
 - Currently using `/Users/micheal/projects/depsched/.venv` instead of aeroshift's own venv — must fix next session
-- Dockerfile duplicates the dep list from `pyproject.toml` inline; consolidate later
+- `infra/Dockerfile.backend` duplicates the dep list from `pyproject.toml` inline; consolidate later
 - No retention/partitioning on `aircraft_states` — table will grow unbounded
 - `/states` latest-per-icao24 query uses `DISTINCT ON` subquery; fine for thousands but materialize at scale
+- `CLAUDE.md` is a symlink to `PROJECT_NOTES.md`; if it ever shows as a regular file, recreate with `ln -s PROJECT_NOTES.md CLAUDE.md`
 
 **Next session goal:** Create aeroshift's own venv, bring up `docker compose`, and verify `/health` + `/api/v1/states` + Redis pub/sub end-to-end with real OpenSky data.
 
