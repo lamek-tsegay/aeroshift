@@ -1,6 +1,12 @@
 # env
 venv/
+.venv/
 .env
+
+# tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
 
 # python
 __pycache__/

@@ -1,0 +1,30 @@
+FROM python:3.11-slim AS base
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY src/backend/pyproject.toml /app/pyproject.toml
+RUN pip install --upgrade pip \
+    && pip install \
+        "fastapi>=0.115" \
+        "uvicorn[standard]>=0.32" \
+        "sqlalchemy>=2.0.36" \
+        "alembic>=1.14" \
+        "psycopg2-binary>=2.9.10" \
+        "pydantic>=2.9" \
+        "pydantic-settings>=2.6" \
+        "httpx>=0.28" \
+        "redis>=5.2"
+
+COPY src/backend /app
+
+EXPOSE 8000
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
