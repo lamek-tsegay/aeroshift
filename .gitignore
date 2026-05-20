@@ -29,3 +29,5 @@ notebooks/.ipynb_checkpoints/.DS_Store
 # CLAUDE.md is a symlink to PROJECT_NOTES.md for Claude Code auto-read;
 # the real file (PROJECT_NOTES.md) is tracked, the symlink is not.
 CLAUDE.md
+*.egg-info/
+*.egg-info/
