@@ -24,6 +24,8 @@ data/processed/
 
 # optional: notebook outputs can change often
 notebooks/.ipynb_checkpoints/.DS_Store
-CLAUDE.md
 .claude/
-AERO_CONTEXT.md
+
+# CLAUDE.md is a symlink to PROJECT_NOTES.md for Claude Code auto-read;
+# the real file (PROJECT_NOTES.md) is tracked, the symlink is not.
+CLAUDE.md
