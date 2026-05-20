@@ -20,3 +20,4 @@ data/processed/
 notebooks/.ipynb_checkpoints/.DS_Store
 CLAUDE.md
 .claude/
+AERO_CONTEXT.md
